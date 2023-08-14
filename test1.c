@@ -6,6 +6,9 @@ int main(){
     FILE *f1, *f2;
     //Read file into variables
     f1 = fopen("input.txt", "rt");
+    if (!f1)
+        printf("Unable to access the file.\n");
+    return 1;
     fscanf(f1, "%d", &size);
     for (int i = 0; i < size; i++)
         fscanf(f1, "%d", &Array[i]);
