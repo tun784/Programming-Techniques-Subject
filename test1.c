@@ -1,7 +1,7 @@
 #include <stdio.h>
 #pragma warning (disable: 4996)
+#define MAX 50
 int main(){
-    const int MAX = 50;
     int size, Array[MAX];
     FILE *f1, *f2;
     //Read file into variables
