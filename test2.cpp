@@ -16,11 +16,23 @@ int main() {
             std::cout << "Ket qua cua " << number_a << "/" << number_b << " = " << ketqua << std::endl;
         }
         else
-            throw(number_b);
+            //throw(number_b);
+            
+            throw "Ban da nhap so chia la mot so khong chia duoc.";
+
+            //throw 500;
     }
 
-    catch (int num){
-        std::cout << "Ban khong duoc nhap so " << num << std::endl;
+    // catch (int num){
+    //     std::cout << "Ban khong duoc nhap so " << num << std::endl;
+    // }
+
+    catch (const char *error){
+        std::cout << "Loi: " << error << std::endl;
     }
+
+    // catch (int Error){
+    //     std::cout << "Loi: " << Error << std::endl; 
+    // }
     return 0;
 }
