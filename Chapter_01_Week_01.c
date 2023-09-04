@@ -41,7 +41,6 @@ int main(){
                             // Phần tử nào lớn hơn max thì gán giá trị đó vào max
     printf("Gia tri toi da cua mang la %d va co dia chi la %d\n",*max, max);
 
-    // b)
     min = &array[0];
     for (int i = 0; i < sizeOfArray; i++)
         if (array[i] < *min)
@@ -49,15 +48,23 @@ int main(){
                             // Phần tử nào nhỏ hơn min thì gán giá trị đó vào min
     printf("Dia chi phan tu max (co gia tri la %d): [%d] va dia chi phan tu min (co gia tri la %d): [%d]\n", *max, max, *min, min);
 
+    // 3. Viết chương trình nhập vào chuỗi st. Xuất giá trị từng ký tự của st thông qua con trỏ trỏ đến chuỗi.    
+    int limit;
     char st[MAX];
     printf("Nhap mot chuoi bat ky: ");
     fgets(st, sizeof(st), stdin); // Đọc cả dòng text, bao gồm cả dấu cách
     size_t length = strlen(st);
-    if (length > 0 && st[length - 1] == '\n') {
-        st[length - 1] = '\0'; // Xoá dòng mới
+    if (length > 0 && st[length - 1] == '\n') // Kiểm tra xem chuỗi có bất cứ thứ gì bên trong
+        st[length - 1] = '\0'; // Xoá dấu xuống dòng của chuỗi
+    limit = strlen(st); // Kiểm tra độ dài chuỗi
+    printf("Do dai cua chuoi la %d\n", limit);
+
+    char *c;
+    printf("Tung ky tu trong chuoi %s la:", st);
+    for (int i = 0 ; i < limit; i++){
+        *c = st[i]; // Con trỏ trỏ đến chuỗi và duyệt từng ký tự của chuỗi đó
+        printf(" %c", *c);
     }
 
-    int limit = strlen(st);
-    printf("Do dai cua chuoi la %d\n", limit);
     return 0;
 }
