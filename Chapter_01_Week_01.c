@@ -48,7 +48,7 @@ int main(){
                             // Phần tử nào nhỏ hơn min thì gán giá trị đó vào min
     printf("Dia chi phan tu max (co gia tri la %d): [%d] va dia chi phan tu min (co gia tri la %d): [%d]\n", *max, max, *min, min);
 
-    // 3. Viết chương trình nhập vào chuỗi st. Xuất giá trị từng ký tự của st thông qua con trỏ trỏ đến chuỗi.    
+    // 3. Viết chương trình nhập vào chuỗi st. Xuất giá trị từng ký tự của st thông qua con trỏ trỏ đến chuỗi.
     int limit;
     char st[MAX];
     printf("Nhap mot chuoi bat ky: ");
@@ -62,7 +62,7 @@ int main(){
     char *c;
     printf("Tung ky tu trong chuoi %s la:", st);
     for (int i = 0 ; i < limit; i++){
-        *c = st[i]; // Con trỏ trỏ đến chuỗi và duyệt từng ký tự của chuỗi đó
+        c = &st[i]; // Con trỏ trỏ đến chuỗi và duyệt từng ký tự của chuỗi đó
         printf(" %c", *c);
     }
 
