@@ -65,6 +65,6 @@ int main(){
         c = &st[i]; // Con trỏ trỏ đến chuỗi và duyệt từng ký tự của chuỗi đó
         printf(" %c", *c);
     }
-
+    
     return 0;
 }
