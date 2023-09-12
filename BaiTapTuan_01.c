@@ -1,7 +1,3 @@
-// Các thành viên trong nhóm chúng em gồm:
-// 1. Cao Nhật Linh - 2001215911
-// 2. Trần Thị Trúc - 2001216252
-// 3. Nguyễn Hoàng Tuấn - 2001224555
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
