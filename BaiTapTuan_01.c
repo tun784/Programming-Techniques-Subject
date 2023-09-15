@@ -10,7 +10,7 @@ int main(){
     int a = 0, b = 1;
     int *pa = &a, *pb = &b;
 
-    printf("Gia tri cua cac con tro tren la: %d va %d\n",pa, pb);
+    printf("Gia tri cua cac con tro tren la: %d va %d\n", pa, pb);
 
     // 2. Tạo mảng 1 chiều a chứa n phần tử.
     // a) Tìm max của a, xuất ra max và địa chỉ của max thông qua con trỏ mảng.
