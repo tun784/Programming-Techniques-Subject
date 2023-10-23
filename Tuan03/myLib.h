@@ -3,8 +3,7 @@
 using namespace std;
 #pragma once
 void chuanHoaChuoi(string& s){
-    string temp = s;
-    strncpy(temp, s); //copy s vào biến tạm
+    string temp = s; //copy s vào biến tạm
     int n = s.length(); //độ dài chuỗi s
     int dau = 0;
     while (temp[dau] = ' ')
