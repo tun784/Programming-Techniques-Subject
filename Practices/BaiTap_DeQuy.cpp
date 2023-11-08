@@ -9,6 +9,7 @@ double Sn3(int n);
 double Sn4(int n);
 double Sn5(int n);
 double Sn6(int n);
+double Sn7(int n);
 
 int main(){
 	int i, n = 5;
@@ -86,3 +87,6 @@ double Sn6(int n){
 
 }
 // S(n) = (1 + sqrt(1 + 2)) / (2 + sqrt(3!)) + (2 + sqrt(2 + 3)) / (3 + sqrt(4!)) + (3 + sqrt(3 + 4)) / (4 + sqrt(5!)) + ⋯ + (n + sqrt(n + n + 1)) / ( (n + 1) + sqrt((n + 2)!) )
+double Sn7(int n){
+
+}
