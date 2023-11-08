@@ -7,21 +7,43 @@ int Sn1(int n);
 double Sn2(int n);
 double Sn3(int n);
 double Sn4(int n);
+double Sn5(int n);
+double Sn6(int n);
 
 int main(){
-	int n = 5;
-	cout << "Bai 1:" << endl;
-	cout << "S(n) = 1 + 2 + 3 + ... + n" << endl;
-	cout << "Voi n = " << n << " thi Sn(n)= " << Sn1(n) << endl << endl;
-
-	cout << "S(n) = sqrt(5 + sqrt(5 + sqrt(5 + ...)" << endl;
-	cout << "Voi n = " << n << " thi Sn(n)= " << Sn2(n) << endl << endl;
-
-	cout << "S(n) = 1/2 + 2/3 + ... + n/(n+1)" << endl;
-	cout << "Voi n = " << n << " thi Sn(n)= " << Sn3(n) << endl << endl;
-
-	cout << "S(n) = 1 + 1/3 + 1/5 + ... + 1/(2n+1)" << endl;
-	cout << "Voi n = " << n << " thi Sn(n)= " << Sn4(n) << endl << endl;
+	int i, n = 5;
+	cout << "Bai 1:" << endl << "Voi n = " << n << " thi: " << endl;
+	// 1
+	cout << "S(n) = ";
+	for (i = 1; i < n; i++)
+		cout << i << " + ";
+	cout << n << " = " << Sn1(n) << endl << endl;
+	// 2
+	cout << "S(n) = ";
+	for (i=1;i<n;i++)
+		cout << "sqrt(5 + ";
+	cout << "sqrt(5";
+	for (i=1;i<=n;i++)
+		cout << ")";
+	cout << " = " << Sn2(n) << endl << endl;
+	// 3
+	cout << "S(n) = ";
+	for (i=1;i<n;i++)
+		cout << i << "/" << i+1 << " + ";
+	cout << n << "/" << n+1;
+	cout << " = " << Sn3(n) << endl << endl;
+	// 4
+	cout << "S(n) = ";
+	for (i=1;i<n;i++)
+		cout << "1/" << 2*i+1 << " + ";
+	cout << "1/" << 2*n+1;
+	cout << " = " << Sn4(n) << endl << endl;
+	// 5
+	cout << "S(n) = ";
+	for (i=1;i<n;i++)
+		cout << i << "*" << i+1 << " + ";
+	cout << n << "*" << n+1;
+	cout << " = " << Sn5(n) << endl << endl;
 
 	system("pause");
 	return 0;
@@ -48,7 +70,15 @@ double Sn3(int n){
 // S(n) = 1 + 1/3 + 1/5 + ... + 1/(2n+1)
 double Sn4(int n){
 	if (n == 0)
-		return 1.0;
-	double m = 1.0 / (2 * n + 1);
-	return m + Sn4(n - 1);
+        return 1.0;
+    else
+        return Sn4(n - 1) + 1.0 / (2 * n + 1);
 }
+// S(n) = 1*2 + 2*3+ 3*4 + 4*5 + ... + n*(n+1)
+double Sn5(int n){
+    if (n == 1)
+        return 2.0; // Trường hợp cơ sở, n = 1
+    else
+        return Sn5(n - 1) + n * (n + 1);
+}
+// S(n) = (1*2!) / (2 + √3) + (2*3!) / (3 + √4) + (3*4!) / (4 + √5) + ⋯ + (n*(n + 1)!) / (n + 1) + √(n + 2)
