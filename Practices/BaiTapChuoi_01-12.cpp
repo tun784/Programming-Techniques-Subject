@@ -76,23 +76,6 @@ string chuanHoaChuoi(string &chuoi) {
 	int index = 0; // Vị trí hiện tại trong chuỗi sau khi xóa khoảng trắng
 	bool isKhoangCach = false; // Kiểm tra khoảng trắng thừa
 
-	for (int i = 0; i < len; ++i) {
-		if (chuoi[i] != ' ') {
-			// Nếu không phải là khoảng trắng, sao chép kí tự vào vị trí mới
-			chuoi[index++] = chuoi[i];
-			isKhoangCach = false; // Đặt lại cờ khi gặp kí tự khác khoảng trắng
-		}
-		else if (!isKhoangCach) {
-			// Nếu là khoảng trắng và chưa gặp khoảng trắng trước đó, thêm vào chuỗi
-			chuoi[index++] = ' ';
-			isKhoangCach = true; // Đặt cờ khi gặp khoảng trắng
-		}
-	}
-
-	// Gán kí tự kết thúc chuỗi
-	chuoi.resize(index);
-
-	// Trả về chuỗi sau khi chuẩn hóa
 	return chuoi;
 }
 // Bài 4. Viết hàm tìm kiếm tên trong một chuỗi họ tên.Nếu có thì xuất ra là tên chuỗi họ tên, ngược lại thông báo tên không tồn tại.
