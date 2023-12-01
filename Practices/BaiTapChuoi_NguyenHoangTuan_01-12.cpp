@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 using namespace std;
 bool kySo(string s);
@@ -34,19 +34,19 @@ bool coPhaiChuCaiKhong(char c) {
 }
 
 // Chuyển đổi kí tự thành chữ in hoa
-char inHoa(char c) {
+char inHoa(char &c) {
 	if (c >= 'a' && c <= 'z') {
 		return c - 'a' + 'A';
 	}
 	return c;
 }
-char inThuong(char c) {
+char inThuong(char &c) {
 	if (c >= 'A' && c <= 'Z') {
 		return c - 'A' + 'a';
 	}
 	return c;
 }
-string ProperCase(string chuoi){
+string ProperCase(string &chuoi){
 	int len = chuoi.length();
 	bool tuMoi = true; // Biến kiểm tra xem có phải là từ mới không
 
@@ -69,7 +69,9 @@ string ProperCase(string chuoi){
 	return chuoi;
 }
 // Bài 3. Viết hàm xóa những khoảng trắng thừa trong chuỗi(hay còn gọi là chuẩn hóa chuỗi).
-string chuanHoaChuoi(string chuoi) {
+string chuanHoaChuoi(string &chuoi) {
+	inHoa(chuoi);
+	inThuong(chuoi);
 	int len = chuoi.length();
 	int index = 0; // Vị trí hiện tại trong chuỗi sau khi xóa khoảng trắng
 	bool isKhoangCach = false; // Kiểm tra khoảng trắng thừa
