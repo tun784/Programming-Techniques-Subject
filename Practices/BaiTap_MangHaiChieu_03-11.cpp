@@ -1,4 +1,3 @@
-﻿// Nguyễn Hoàng Tuấn - 2001224555
 #include <iostream>
 #include <ctime>
 using namespace std;
