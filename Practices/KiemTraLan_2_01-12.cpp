@@ -1,4 +1,3 @@
-﻿// Nguyễn Hoàng Tuấn - 2001224555
 #include <iostream>
 #include <math.h>
 using namespace std;
