@@ -83,7 +83,6 @@ int main(){
 
 	int tongChan = sumEven(arr, n, 0);
 	cout << "2a. Tong cac phan tu chan trong mang la: " << tongChan << endl;
-	cout <<
 
 	system("pause");
 	return 0;
