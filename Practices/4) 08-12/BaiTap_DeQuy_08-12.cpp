@@ -85,6 +85,6 @@ int main(){
 	cout << "2a. Tong cac phan tu chan trong mang la: " << tongChan << endl;
 	cout <<
 
-		system("pause");
+	system("pause");
 	return 0;
 }
