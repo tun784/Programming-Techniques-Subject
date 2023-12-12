@@ -6,102 +6,106 @@
 
 const int ROWS = 100;
 const int COLS = 100;
-// Tạo và xuất ma trận a chứa các phần tử ngẫu nhiên
-void initializeMatrix(int a[ROWS][COLS], int row, int cols, int k) {
+// Tạo và xuất ma trận Array chứa các phần tử ngẫu nhiên
+void taoMaTran(int array[ROWS][COLS], int hang, int cot, int a, int b) {
     srand(time(0));
-
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            a[i][j] = rand() % (k + 1);
+    for (int i = 0; i < hang; i++) {
+        for (int j = 0; j < cot; j++) {
+            array[i][j] = a + rand() % (b-a + 1);
         }
     }
 }
-void printMatrix(int a[ROWS][COLS], int row, int cols) {
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            std::cout << a[i][j] << " ";
+void inMaTran(int array[ROWS][COLS], int hang, int cot) {
+    for (int i = 0; i < hang; i++) {
+        for (int j = 0; j < cot; j++) {
+            std::cout << array[i][j] << " ";
         }
         std::cout << std::endl;
     }
 }
-
-void printQueens(int a[ROWS][COLS], int row, int cols) {
+// Xuất các phần tử hoàng hậu
+void HoangHau(int array[ROWS][COLS], int hang, int cot) {
+    int maxInRow;
     std::cout << "Queen elements: ";
-    for (int i = 0; i < row; ++i) {
-        int maxInRow = a[i][0];
-        for (int j = 1; j < cols; ++j) {
-            if (a[i][j] > maxInRow) {
-                maxInRow = a[i][j];
+    for (int i = 0; i < hang; i++) {
+        maxInRow = array[i][0];
+        for (int j = 1; j < cot; j++) {
+            if (array[i][j] > maxInRow) {
+                maxInRow = array[i][j];
             }
         }
         std::cout << maxInRow << " ";
     }
     std::cout << std::endl;
 }
-
-void printKnight(int a[ROWS][COLS], int row, int cols) {
+// Xuất các phần tử là điểm yên ngựa
+void diemYenNgua(int array[ROWS][COLS], int hang, int cot) {
+    int minInCol;
     std::cout << "Knight elements: ";
-    for (int j = 0; j < cols; ++j) {
-        int minInCol = a[0][j];
-        for (int i = 1; i < row; ++i) {
-            if (a[i][j] < minInCol) {
-                minInCol = a[i][j];
+    for (int j = 0; j < cot; j++) {
+        minInCol = array[0][j];
+        for (int i = 1; i < hang; i++) {
+            if (array[i][j] < minInCol) {
+                minInCol = array[i][j];
             }
         }
         std::cout << minInCol << " ";
     }
     std::cout << std::endl;
 }
-
-void printEvenRow(int a[ROWS][COLS], int row, int cols) {
-    std::cout << "Even row elements: ";
-    for (int i = 0; i < row; i += 2) {
-        for (int j = 0; j < cols; ++j) {
-            std::cout << a[i][j] << " ";
+// Xuất dòng chỉ chứa số chẵn
+void xuatDongChuaSoChan(int array[ROWS][COLS], int hang, int cot) {
+    std::cout << "Even hang elements: ";
+    for (int i = 0; i < hang; i += 2) {
+        for (int j = 0; j < cot; j++) {
+            std::cout << array[i][j] << " ";
         }
     }
     std::cout << std::endl;
 }
-
-void sortMatrix(int a[ROWS][COLS], int row, int cols) {
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < cols - 1; ++j) {
-            for (int k = j + 1; k < cols; ++k) {
-                if (a[i][j] > a[i][k]) {
-                    std::swap(a[i][j], a[i][k]);
-                }
-            }
-        }
-    }
+// Sắp xếp mảng A tăng theo từng dòng
+void swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+void sapxepMangTangTheoTungDong(int array[ROWS][COLS], int hang, int cot) {
+    for (int i = 0; i < hang; i++)
+        for (int j = 0; j < cot - 1; j++)
+            for (int k = j + 1; k < cot; ++k)
+                if (array[i][j] > array[i][k])
+                    swap(array[i][j], array[i][k]);
 }
 
 int main() {
-    int row, cols, k;
-    std::cout << "Enter number of ROWS (row): ";
-    std::cin >> row;
-    std::cout << "Enter number of columns (cols): ";
-    std::cin >> cols;
-    std::cout << "Enter the upper limit for random numbers (k): ";
-    std::cin >> k;
+    int hang, cot, a, b;
+    std::cout << "Enter number of hang (rows < 100): ";
+    std::cin >> hang;
+    std::cout << "Enter number of columns (columns < 100): ";
+    std::cin >> cot;
+    std::cout << "Enter the lower limit for random numbers (a): ";
+    std::cin >> a;
+    std::cout << "Enter the upper limit for random numbers (b): ";
+    std::cin >> b;
 
-    if (row > ROWS || cols > COLS) {
-        std::cout << "Exceeds maximum size. Please adjust row and cols." << std::endl;
+    if (hang > ROWS || cot > COLS) {
+        std::cout << "Exceeds maximum size. Please adjust hang and cot." << std::endl;
         return 1;
     }
 
-    int a[ROWS][COLS];
-    initializeMatrix(a, row, cols, k);
+    int array[ROWS][COLS];
+    taoMaTran(array, hang, cot, a, b);
 
     std::cout << "Randomly generated matrix:" << std::endl;
-    printMatrix(a, row, cols);
+    inMaTran(array, hang, cot);
 
-    printQueens(a, row, cols);
-    printKnight(a, row, cols);
-    printEvenRow(a, row, cols);
+    HoangHau(array, hang, cot);
+    diemYenNgua(array, hang, cot);
+    xuatDongChuaSoChan(array, hang, cot);
 
-    sortMatrix(a, row, cols);
-    std::cout << "Matrix sorted in each row:" << std::endl;
-    printMatrix(a, row, cols);
+    sapxepMangTangTheoTungDong(array, hang, cot);
+    std::cout << "Matrix sorted in each hang:" << std::endl;
+    inMaTran(array, hang, cot);
 
     return 0;
 }
