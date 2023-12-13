@@ -25,32 +25,87 @@ void inMaTran(int array[ROWS][COLS], int hang, int cot) {
 }
 // Xuất các phần tử hoàng hậu
 void HoangHau(int array[ROWS][COLS], int hang, int cot) {
-    int maxInRow;
     std::cout << "Queen elements: ";
-    for (int i = 0; i < hang; i++) {
-        maxInRow = array[i][0];
-        for (int j = 1; j < cot; j++) {
+    for (int i = 0; i < hang; ++i) {
+        int maxInRow = array[i][0];
+        for (int j = 1; j < cot; ++j) {
             if (array[i][j] > maxInRow) {
                 maxInRow = array[i][j];
             }
         }
-        std::cout << maxInRow << " ";
+
+        int maxInCol = array[0][i];
+        for (int j = 1; j < hang; ++j) {
+            if (array[j][i] > maxInCol) {
+                maxInCol = array[j][i];
+            }
+        }
+
+        int maxInDiagonal1 = array[i][i];
+        int maxInDiagonal2 = array[i][cot - i - 1];
+
+        for (int j = 0; j < hang; ++j) {
+            if (i != j) {
+                if (array[j][i] > maxInDiagonal1) {
+                    maxInDiagonal1 = array[j][i];
+                }
+                if (array[j][cot - i - 1] > maxInDiagonal2) {
+                    maxInDiagonal2 = array[j][cot - i - 1];
+                }
+            }
+        }
+
+        int maxQueenElement = std::max(std::max(maxInRow, maxInCol), std::max(maxInDiagonal1, maxInDiagonal2));
+        std::cout << maxQueenElement << " ";
     }
     std::cout << std::endl;
 }
 // Xuất các phần tử là điểm yên ngựa
 void diemYenNgua(int array[ROWS][COLS], int hang, int cot) {
-    int minInCol;
-    std::cout << "Knight elements: ";
-    for (int j = 0; j < cot; j++) {
-        minInCol = array[0][j];
-        for (int i = 1; i < hang; i++) {
-            if (array[i][j] < minInCol) {
-                minInCol = array[i][j];
+    // int minInCol;
+    // std::cout << "Knight elements: ";
+    // for (int j = 0; j < cot; j++) {
+    //     minInCol = array[0][j];
+    //     for (int i = 1; i < hang; i++) {
+    //         if (array[i][j] < minInCol) {
+    //             minInCol = array[i][j];
+    //         }
+    //     }
+    //     std::cout << minInCol << " ";
+    // }
+    // std::cout << std::endl;
+
+    int i, j, k, maxRow, minRow, maxCol, minCol, m, n, a, b;
+    for (i = 0; i < hang; i++){
+		maxRow = array[i][0];
+        m = 0;
+		minRow = array[i][0];
+        n = 0;
+		for (j = 1; j < cot; j++){
+			if (maxRow < array[i][j]){
+				maxRow = array[i][j];
+                m = j;
+            }
+			if (minRow > array[i][j]){
+				minRow = array[i][j];
+                n = j;
+            }
+		}
+        maxCol = array[i][n];
+        minCol = array[i][m];
+        for (k = 0; k < hang; k++){
+            if (maxCol < array[k][n]){
+                maxCol = array[k][n];
+            }
+            if (minCol > array[k][m]){
+                minCol = array[k][m];
             }
         }
-        std::cout << minInCol << " ";
-    }
+        if (maxRow == minCol)
+            std::cout << maxRow << " ";
+        if (minRow == maxCol)
+            std::cout << maxCol << " ";
+	}
     std::cout << std::endl;
 }
 // Xuất dòng chỉ chứa số chẵn
