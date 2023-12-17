@@ -1,4 +1,5 @@
 //  Buổi 4
+//  Bài tập thực hành trên lớp -    Bài 1: Câu 1, 2, 3, 4, 5
 //  Bài tập thực hành về nhà -      Bài 4: Câu 4, 5, 6
 //  Buổi 6
 //  Bài tập thực hành trên lớp -    Bài 1, bài 2, bài 3, bài 4, bài 5
@@ -12,7 +13,76 @@
 #define ROWS 3
 #define COLS 3
 #define SIZE 1000
-// Buổi 4
+// Buổi 4 - Bài 1 - Bài tập thực hành trên lớp
+// Câu 1
+void randomMatrix(int A[][100], int n, int m){
+	srand(time(NULL));
+	for (int i = 0; i < m; i++){
+		for (int j = 0; j < n; j++){
+			A[i][j] = rand() % 10;
+		}
+	}
+}
+void outputMatrix(int A[][100], int n, int m){
+	for (int i = 0; i < m; i++){
+		for (int j = 0; j < n; j++)
+			printf("%d ", A[i][j]);
+		printf("\n");
+	}
+}
+
+// Câu 2
+int tong_tung_dong(int A[][100], int m, int n){
+	int sum = 0;
+	for (int i=0; i < m; i++){
+		for (int j = 0; j < n; j++)
+			sum += A[i][j];
+		return printf("Tong tung dong %d la: %d\n", i+1, sum);
+	}
+}
+// Câu 3
+void Max_cot(int A[][100], int m, int n){
+	int max;
+	for (int j = 0; j < n; j++){
+		max = A[0][j];
+		for (int i = 0; i < m; i++)
+			if (A[i][j]>max)
+				max = A[i][j];
+		printf("\nGia tri lon nhat cot %d la: %d\n", j, max);
+	}
+}
+// Câu 4
+void Output_pt_duong_bien(int A[][100], int m, int n){
+	// biên trên
+	for (int j = 0; j < n; j++){
+		printf("%d\t", A[0][j]);
+	}
+	printf("\n");
+	// biên giữa
+	for (int i = 0; i<m; i++){
+		printf("%d\n", A[i][0]);
+		for (int j = 1; j < n - 1; j++)
+			printf("\t");
+		printf("%d", A[i][n - 1]);
+	}
+	// biên dưới
+	if (n>1){
+		for (int j = 0; j < n; j++){
+			printf("%d\t", A[n-1][j]);
+		}
+		printf("\n");
+	}
+}
+void Output_cucdai(int A[][100], int m, int n){
+	for (int i=0; i < m; i++){
+		for (int j = 0; j < n; j++){
+			if (A[i][j]>A[i - 1][j] && A[i][j]>A[i + 1][j] && A[i][j]>A[i][j - 1] && A[i][j] > A[i][j + 1]){
+				printf("Phan tu cuc dai: A[%d][%d] = %d\n", i, j, A[i][j]);
+			}
+		}
+	}
+
+}
 // Bài 4
 void initMatrix(int array[ROWS][COLS], int m, int n) {
     int a = 10, b = 99;
@@ -183,8 +253,53 @@ void catHoLot_va_Ten(const char* s, char* a, char* b) {
     strcpy(a, s + c + 1);
 }
 int main() {
+    printf("Buoi 4\nBai 1:\n");
+    int Array[100][100], m, n, choice;
+	printf("Nhap so hang: ");
+	scanf("%d", &m);
+	printf("Nhap so cot: ");
+	scanf("%d", &n);
+    printf("\t===== MENU =====\n");
+    printf("1. Nhap ma tran ngau nhien va xuat ra man hinf\n");
+    printf("2. Tinh tong tung dong\n");
+    printf("3. Xuat gia tri lon nhat tung cot\n");
+    printf("4. Xuat cac phan tu tren bien\n");
+    printf("5. Xuat cac phan tu cuc dai\n");
+    printf("0. Thoat\n");
+    printf("================\n");
+    do {
+		printf("Nhap lua chon cua ban: ");
+		scanf("%d", &choice);
+
+		switch (choice) {
+		case 0:
+			printf("Ket thuc chuong trinh.\n");
+		case 1:{
+			randomMatrix(Array, m, n);
+			printf("Nhap ma tran thanh cong!\n");
+			printf("Ma tran:\n");
+			outputMatrix(Array, m, n);
+		}break;
+		case 2:{
+			tong_tung_dong(Array, m, n);
+		}break;
+		case 3:{
+			Max_cot(Array, m, n);
+		}break;
+		case 4:{
+			Output_pt_duong_bien(Array, m, n);
+		}break;
+		case 5:{
+			Output_cucdai(Array, m, n);
+		}break;
+		default:
+			printf("Lua chon khong hop le. Vui long thu lai!\n");
+			break;
+		}
+	} while (choice != 0);
+
     printf("Bai 4:\n");
-    int doiXung; // Biến này thay thế cho kiểu dữ liệu bool
+    int doiXung; // Biến này thay thế cho kiểu dữ liệu bool trong C++
 	int a[ROWS][COLS] = {
         {56, 72, 64},
         {72, 25, 37},
@@ -203,7 +318,7 @@ int main() {
 	else
 	    printf("Ma tran khong doi xung qua duong cheo chinh.\n");
     
-    int b[ROWS][COLS];
+    int b[ROWS][COLS]; // Thêm 1 ma trận khác làm ví dụ
     initMatrix(b, ROWS, COLS);
     printMatrix(b, ROWS, COLS);
 	doiXung = coDoiXungKhong(b, ROWS, COLS);
@@ -218,10 +333,9 @@ int main() {
 	else
 	    printf("Ma tran khong doi xung qua duong cheo chinh.\n");
 
-	printf("Bai 1:\n");
 	char s[SIZE];
     int choice;
-    printf("Bai 1:\n");
+    printf("Buoi 6:\nBai 1 (Bai tap thuc hanh tren lop):\n");
     printf("\t==== MENU ====\n");
     printf("1. Kiem tra chuoi co toan chu so hay khong?\n");
     printf("2. Dinh dang chuoi\n");

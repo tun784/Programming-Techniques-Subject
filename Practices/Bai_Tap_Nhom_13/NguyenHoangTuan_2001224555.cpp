@@ -82,36 +82,36 @@ void xuatPhanTuCucDai(int array[ROWS][COLS], int hang, int cot) {
 // 6. Xuất các phần tử hoàng hậu
 void HoangHau(int array[ROWS][COLS], int hang, int cot) {
     for (int i = 0; i < hang; ++i) {
-        int maxInRow = array[i][0];
+        int maxRow = array[i][0];
         for (int j = 1; j < cot; ++j) {
-            if (array[i][j] > maxInRow) {
-                maxInRow = array[i][j];
+            if (array[i][j] > maxRow) {
+                maxRow = array[i][j];
             }
         }
 
-        int maxInCol = array[0][i];
+        int maxCol = array[0][i];
         for (int j = 1; j < hang; ++j) {
-            if (array[j][i] > maxInCol) {
-                maxInCol = array[j][i];
+            if (array[j][i] > maxCol) {
+                maxCol = array[j][i];
             }
         }
 
-        int maxInDiagonal1 = array[i][i];
-        int maxInDiagonal2 = array[i][cot - i - 1];
+        int duongCheoChinh_1 = array[i][i];
+        int duongCheoChinh_2 = array[i][cot - i - 1];
 
         for (int j = 0; j < hang; ++j) {
             if (i != j) {
-                if (array[j][i] > maxInDiagonal1) {
-                    maxInDiagonal1 = array[j][i];
+                if (array[j][i] > duongCheoChinh_1) {
+                    duongCheoChinh_1 = array[j][i];
                 }
-                if (array[j][cot - i - 1] > maxInDiagonal2) {
-                    maxInDiagonal2 = array[j][cot - i - 1];
+                if (array[j][cot - i - 1] > duongCheoChinh_2) {
+                    duongCheoChinh_2 = array[j][cot - i - 1];
                 }
             }
         }
 
-        int maxQueenElement = std::max(std::max(maxInRow, maxInCol), std::max(maxInDiagonal1, maxInDiagonal2));
-        cout << maxQueenElement << " ";
+        int hoangHau = max(max(maxRow, maxCol), max(duongCheoChinh_1, duongCheoChinh_2));
+        cout << hoangHau << " ";
     }
 }
 // 7. Xuất các phần tử là điểm yên ngựa
@@ -183,7 +183,7 @@ void sapxepMangTangTheoTungDong(int array[ROWS][COLS], int hang, int cot) {
 void TaoVaXuatMaTran(int array[ROWS][COLS], int hang, int cot) {
     srand(time(0));
 
-    cout << "Ma tran ngau nhien:\n";
+    cout << "Ma tran ngau nhien:" << endl;
     for (int i = 0; i < hang; ++i) {
         for (int j = 0; j < cot; ++j) {
             array[i][j] = rand() % 101; // Lấy số ngẫu nhiên từ 0 đến 100
@@ -195,7 +195,7 @@ void TaoVaXuatMaTran(int array[ROWS][COLS], int hang, int cot) {
 
 // 2. Hàm xuất các cột chỉ chứa số lẻ
 void XuatCotLe(int array[ROWS][COLS], int hang, int cot) {
-    cout << "Cac cot chi chua so le:\n";
+    cout << "Cac cot chi chua so le:" << endl;
     for (int j = 0; j < cot; ++j) {
         bool coSoLe = false;
         for (int i = 0; i < hang; ++i) {
@@ -239,7 +239,7 @@ int DemChuSoHai(int array[ROWS][COLS], int hang, int cot) {
 
 // 5. Hàm xuất các phần tử cực tiểu của ma trận
 void XuatCucTieu(int array[ROWS][COLS], int hang, int cot) {
-    cout << "Cac phan tu cuc tieu cua ma tran:\n";
+    cout << "Cac phan tu cuc tieu cua ma tran:" << endl;
     for (int i = 0; i < hang; ++i) {
         for (int j = 0; j < cot; ++j) {
             bool cucTieu = true;
@@ -292,7 +292,7 @@ bool KiemTraZicZac(int array[ROWS][COLS], int hang, int cot) {
 
 // 8. Hàm liệt kê chỉ số các dòng chứa toàn giá trị chẵn
 void LietKeDongChan(int array[ROWS][COLS], int hang, int cot) {
-    cout << "Cac dong chua toan gia tri chan:\n";
+    cout << "Cac dong chua toan gia tri chan:" << endl;
     for (int i = 0; i < hang; ++i) {
         bool toanChan = true;
         for (int j = 0; j < cot; ++j) {
@@ -309,7 +309,7 @@ void LietKeDongChan(int array[ROWS][COLS], int hang, int cot) {
 
 // 9. Hàm liệt kê các dòng chứa giá trị giảm dần
 void LietKeDongGiamDan(int array[ROWS][COLS], int hang, int cot) {
-    cout << "Cac dong chua gia tri giam dan:\n";
+    cout << "Cac dong chua gia tri giam dan:" << endl;
     for (int i = 0; i < hang; ++i) {
         bool giamDan = true;
         for (int j = 0; j < cot - 1; ++j) {
@@ -409,6 +409,12 @@ void duongSongSongDuongCheoChinh(int array[SIZE][SIZE], int size) {
         cout << array[i][size - i - 1] << " ";
 }
 
+// Hàm copy ma trận
+void copy(int subArray[ROWS][COLS], int array[ROWS][COLS], int hang, int cot){
+    for (int i = 0; i < ROWS; i++)
+        for (int j = 0; j < COLS; j++)
+            subArray[i][j] = array[i][j];
+}
 int main() {
     // Bài 1
     int hang = 2, cot = 3, a = 10, b = 99;
@@ -417,7 +423,7 @@ int main() {
     cout << "Nhap gioi han tren cua trinh tao so ngau nhien (b): ";
     cin >> b;
     while (hang <= 0 || cot <= 0 || hang > ROWS || cot > COLS) {
-        cout << "Nhap kich thuoc ma tran khong hop le. Vui long nhap lai:\n";
+        cout << "Nhap kich thuoc ma tran khong hop le. Vui long nhap lai:" << endl;
         cout << "Nhap gioi han duoi cua trinh tao so ngau nhien (a): ";
         cin >> a;
         cout << "Nhap gioi han tren cua trinh tao so ngau nhien (b): ";
@@ -425,71 +431,63 @@ int main() {
     }
     int array[ROWS][COLS];
     taoMaTran(array, hang, cot, a, b);
-    cout << "Tao va xuat ma tran Array chua cac phan tu ngau nhien: " << endl;
+    cout << "1. Tao va xuat ma tran Array chua cac phan tu ngau nhien: " << endl;
     inMaTran(array, hang, cot);
     cout << endl;
-    cout << "Cac phan tu hoang hau: ";
+    cout << "2. Tinh va xuat tong gia tri tung dong" << endl;
+    tinhVaXuatTongDong(array, hang, cot);
+    cout << "3. Xuat phan tu lon nhat tren tung cot" << endl;
+    xuatPhanTuLonNhatTrenCot(array, hang, cot);
+    cout << "4. Xuat cac phan tu thuoc cac duong bien tren, duoi, trai va phai" << endl;
+    xuatPhanTuDuongBien(array, hang, cot);
+    cout << "5. Xuat cac phan tu cuc dai" << endl;
+    xuatPhanTuCucDai(array, hang, cot);
+    cout << "6. Cac phan tu hoang hau: ";
     HoangHau(array, hang, cot);
     cout << endl;
-    cout << "Cac phan tu diem yen ngua: ";
+    cout << "7. Cac phan tu diem yen ngua: ";
     diemYenNgua(array, hang, cot);
     cout << endl;
-    cout << "Xuat dong chi chua so chan: ";
+    cout << "8. Xuat dong chi chua so chan: ";
     xuatDongChuaSoChan(array, hang, cot);
     cout << endl;
-    sapxepMangTangTheoTungDong(array, hang, cot);
-    cout << "Sap xep mang A tang theo tung dong: " << endl;
-    inMaTran(array, hang, cot);
-    cout << "Tinh va xuat tong gia tri tung dong" << endl;
-    tinhVaXuatTongDong(array, hang, cot);
-    cout << "Xuat phan tu lon nhat tren tung cot" << endl;
-    xuatPhanTuLonNhatTrenCot(array, hang, cot);
-    cout << "Xuat cac phan tu thuoc cac duong bien tren, duoi, trai va phai" << endl;
-    xuatPhanTuDuongBien(array, hang, cot);
-    cout << "Xuat cac phan tu cuc dai" << endl;
-    xuatPhanTuCucDai(array, hang, cot);
-    // Bài 3 (tiếp tục các hàm xử lý trên mảng 2 chiều A (bài 1))
+    int subArray[ROWS][COLS];
+    for (int i = 0; i < ROWS; i++)
+        for (int j = 0; j < COLS; j++)
+            subArray[i][j] = array[i][j];
+    sapxepMangTangTheoTungDong(subArray, hang, cot);
+    cout << "9. Sap xep mang A tang theo tung dong: " << endl;
+    inMaTran(subArray, hang, cot);
+    cout << "Bai 3 (tiep tuc cac ham xu ly tren mang 2 chieu A (bai 1))" << endl;
     int maxBien = TimPhanTuLonNhatBien(array, hang, cot);
-    cout << "Phan tu lon nhat tren bien cua ma tran: " << maxBien << endl;
+    cout << "2. Phan tu lon nhat tren bien cua ma tran: " << maxBien << endl;
 
     int soLuongChuSo2 = DemChuSoHai(array, hang, cot);
-    cout << "So luong chu so 2 xuat hien trong ma tran: " << soLuongChuSo2 << endl;
+    cout << "3. So luong chu so 2 xuat hien trong ma tran: " << soLuongChuSo2 << endl;
 
+    cout << "4. Xuat cac phan tu cuc tieu cua ma tran" << endl;
     XuatCucTieu(array, hang, cot);
-
+    copy(subArray, array, hang, cot);
     SapXepMaTran(array, hang, cot, true);
-    cout << "Ma tran sau khi sap xep:\n";
-    for (int i = 0; i < hang; ++i) {
-        for (int j = 0; j < cot; ++j) {
-            cout << array[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    SapXepMaTran(array, hang, cot, false);
-    cout << "Ma tran sau khi sap xep:\n";
-    for (int i = 0; i < hang; ++i) {
-        for (int j = 0; j < cot; ++j) {
-            cout << array[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    if (KiemTraZicZac(array, hang, cot)) {
-        cout << "Ma tran co gia tri gi giam dan theo cot va dong (ziczac).\n";
-    } else {
-        cout << "Ma tran khong co gia tri gi giam dan theo cot va dong (ziczac).\n";
-    }
-
+    cout << "5. Ma tran sau khi sap xep:" << endl;
+    inMaTran(subArray, hang, cot);
+    copy(subArray, array, hang, cot);
+    SapXepMaTran(subArray, hang, cot, false);
+    cout << "6. Ma tran sau khi sap xep:" << endl;
+    inMaTran(subArray, hang, cot);
+    if (KiemTraZicZac(array, hang, cot))
+        cout << "7. Ma tran co gia tri gi giam dan theo cot va dong (ziczac)." << endl;
+    else
+        cout << "7. Ma tran khong co gia tri gi giam dan theo cot va dong (ziczac)." << endl;
+    cout << "8. Liet ke chi so cac dong chua toan gia tri chan." << endl;
     LietKeDongChan(array, hang, cot);
+    cout << "9. Liet ke cac dong chua gia tri giam dan." << endl;
     LietKeDongGiamDan(array, hang, cot);
-
     int giaTriXuatHienNhieuNhat = TimGiaTriXuatHienNhieuNhat(array, hang, cot);
-    cout << "Gia tri xuat hien nhieu nhat trong ma tran: " << giaTriXuatHienNhieuNhat << endl;
-
+    cout << "10. Gia tri xuat hien nhieu nhat trong ma tran: " << giaTriXuatHienNhieuNhat << endl;
     int chuSoXuatHienNhieuNhat = TimChuSoXuatHienNhieuNhat(array, hang, cot);
-    cout << "Chu so xuat hien nhieu nhat trong ma tran: " << chuSoXuatHienNhieuNhat << endl;
-    // Bài 2
+    cout << "11. Chu so xuat hien nhieu nhat trong ma tran: " << chuSoXuatHienNhieuNhat << endl;
+    cout << "Bai 2. Cho ma tran vuong A cap n, chua so nguyen" << endl;
     cout << endl;
     int size, i ,j;
     srand(time(0));
@@ -497,15 +495,15 @@ int main() {
     size = 5 + rand() % (7-5 + 1);
     // Tạo và xuất ma trận ngẫu nhiên
     taoMaTranVuong(arr, size);
-    cout << "Tao ma tran vuong ngau nhien:" << endl;
+    cout << "1. Tao ma tran vuong ngau nhien co cap n>=5:" << endl;
     inMaTranVuong(arr, size);
     cout << endl;
     // Xuất các phần tử trên đường chéo chính
-    cout << "Xuat cac phan tu tren duong cheo chinh: ";
+    cout << "2. Xuat cac phan tu tren duong cheo chinh: ";
     duongCheoChinh(arr, size);
     cout << endl;
     // Xuất các phần tử thuộc đường chéo song song với đường chéo chính
-    cout << "Xuat cac phan tu thuoc duong cheo song song voi duong cheo chinh: ";
+    cout << "3. Xuat cac phan tu thuoc duong cheo song song voi duong cheo chinh: ";
     duongSongSongDuongCheoChinh(arr, size);
     cout << endl;
     return 0;
