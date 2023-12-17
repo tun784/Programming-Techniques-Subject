@@ -1,4 +1,5 @@
-//  Bài tập thực hành trên lớp -    Bài 1: Câu 6, 7, 8, 9
+//  Buổi 4
+//  Bài tập thực hành trên lớp -    Bài 1: Câu 1, 2, 3, 4, 5, 6, 7, 8, 9
 //                                  Bài 2: Câu 1, 2, 3
 //  Bài tập thực hành về nhà -      Bài 3: Câu 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
 #include <iostream>
@@ -6,10 +7,10 @@
 #include <ctime>
 using namespace std;
 // Bài 1
-const int ROWS = 100;
-const int COLS = 100;
-const int SIZE = 100;
-// Tạo và xuất ma trận Array chứa các phần tử ngẫu nhiên
+#define ROWS 100
+#define COLS 100
+#define SIZE 100
+// 1. Tạo và xuất ma trận Array chứa các phần tử ngẫu nhiên
 void taoMaTran(int array[ROWS][COLS], int hang, int cot, int a, int b) {
     srand(time(0));
     for (int i = 0; i < hang; i++)
@@ -24,7 +25,61 @@ void inMaTran(int array[ROWS][COLS], int hang, int cot) {
         cout << endl;
     }
 }
-// Xuất các phần tử hoàng hậu
+// 2. Tính và xuất tổng giá trị từng dòng
+void tinhVaXuatTongDong(int array[ROWS][COLS], int hang, int cot) {
+    cout << "Tong gia tri tung dong:" << endl;
+    for (int i = 0; i < hang; i++) {
+        int tong = 0;
+        for (int j = 0; j < cot; j++) {
+            tong += array[i][j];
+        }
+        cout << "Dong " << i + 1 << ": " << tong << endl;
+    }
+}
+// 3. Xuất phần tử lớn nhất trên từng cột
+void xuatPhanTuLonNhatTrenCot(int array[ROWS][COLS], int hang, int cot) {
+    cout << "Phan tu lon nhat tren tung cot:" << endl;
+    for (int j = 0; j < cot; j++) {
+        int max = array[0][j];
+        for (int i = 1; i < hang; i++) {
+            if (array[i][j] > max) {
+                max = array[i][j];
+            }
+        }
+        cout << "Cot " << j + 1 << ": " << max << endl;
+    }
+}
+// 4. Xuất các phần tử thuộc các đường biên trên, dưới, trái và phải
+void xuatPhanTuDuongBien(int array[ROWS][COLS], int hang, int cot) {
+    cout << "Cac phan tu thuoc cac duong bien tren, duoi, trai va phai:" << endl;
+    for (int i = 0; i < hang; i++) {
+        for (int j = 0; j < cot; j++) {
+            if (i == 0 || i == hang - 1 || j == 0 || j == cot - 1) {
+                cout << array[i][j] << " ";
+            } else {
+                cout << "  ";
+            }
+        }
+    }
+    cout << endl;
+}
+// 5. Xuất các phần tử cực đại
+void xuatPhanTuCucDai(int array[ROWS][COLS], int hang, int cot) {
+    cout << "Cac phan tu cuc dai:" << endl;
+    for (int i = 1; i < hang - 1; i++) {
+        for (int j = 1; j < cot - 1; j++) {
+            int current = array[i][j];
+            if (current >= array[i - 1][j] && current >= array[i + 1][j] &&
+                current >= array[i][j - 1] && current >= array[i][j + 1]) {
+                cout << current << " ";
+            } else {
+                cout << "  ";
+            }
+        }
+    }
+    cout << endl;
+}
+// 6. Xuất các phần tử hoàng hậu
 void HoangHau(int array[ROWS][COLS], int hang, int cot) {
     for (int i = 0; i < hang; ++i) {
         int maxInRow = array[i][0];
@@ -59,7 +114,7 @@ void HoangHau(int array[ROWS][COLS], int hang, int cot) {
         cout << maxQueenElement << " ";
     }
 }
-// Xuất các phần tử là điểm yên ngựa
+// 7. Xuất các phần tử là điểm yên ngựa
 void diemYenNgua(int array[ROWS][COLS], int hang, int cot) {
     int i, j, k, maxRow, minRow, maxCol, minCol, m, n, a, b;
     for (i = 0; i < hang; i++){
@@ -91,7 +146,7 @@ void diemYenNgua(int array[ROWS][COLS], int hang, int cot) {
             cout << maxCol << " ";
 	}
 }
-// Xuất dòng chỉ chứa số chẵn
+// 8. Xuất dòng chỉ chứa số chẵn
 void xuatDongChuaSoChan(int array[ROWS][COLS], int hang, int cot) {
     bool sochan = true;
     int i, j;
@@ -110,7 +165,7 @@ void xuatDongChuaSoChan(int array[ROWS][COLS], int hang, int cot) {
         }
     }
 }
-// Sắp xếp mảng A tăng theo từng dòng
+// 9. Sắp xếp mảng A tăng theo từng dòng
 void swap(int &a, int &b){
     int temp = a;
     a = b;
@@ -124,7 +179,7 @@ void sapxepMangTangTheoTungDong(int array[ROWS][COLS], int hang, int cot) {
                     swap(array[i][j], array[i][k]);
 }
 // Bài 3
-// Hàm khởi tạo và xuất mảng 2 chiều chứa số nguyên ngẫu nhiên
+// 1. Hàm khởi tạo và xuất mảng 2 chiều chứa số nguyên ngẫu nhiên
 void TaoVaXuatMaTran(int array[ROWS][COLS], int hang, int cot) {
     srand(time(0));
 
@@ -138,7 +193,7 @@ void TaoVaXuatMaTran(int array[ROWS][COLS], int hang, int cot) {
     }
 }
 
-// Hàm xuất các cột chỉ chứa số lẻ
+// 2. Hàm xuất các cột chỉ chứa số lẻ
 void XuatCotLe(int array[ROWS][COLS], int hang, int cot) {
     cout << "Cac cot chi chua so le:\n";
     for (int j = 0; j < cot; ++j) {
@@ -158,7 +213,7 @@ void XuatCotLe(int array[ROWS][COLS], int hang, int cot) {
     }
 }
 
-// Hàm tìm phần tử lớn nhất trên biên của ma trận
+// 3. Hàm tìm phần tử lớn nhất trên biên của ma trận
 int TimPhanTuLonNhatBien(int array[ROWS][COLS], int hang, int cot) {
     int maxBien = array[0][0];
     for (int i = 0; i < hang; ++i)
@@ -169,7 +224,7 @@ int TimPhanTuLonNhatBien(int array[ROWS][COLS], int hang, int cot) {
     return maxBien;
 }
 
-// Hàm đếm số lượng chữ số 2 xuất hiện trong ma trận
+// 4. Hàm đếm số lượng chữ số 2 xuất hiện trong ma trận
 int DemChuSoHai(int array[ROWS][COLS], int hang, int cot) {
     int so, dem = 0;
     for (int i = 0; i < hang; ++i)
@@ -182,7 +237,7 @@ int DemChuSoHai(int array[ROWS][COLS], int hang, int cot) {
     return dem;
 }
 
-// Hàm xuất các phần tử cực tiểu của ma trận
+// 5. Hàm xuất các phần tử cực tiểu của ma trận
 void XuatCucTieu(int array[ROWS][COLS], int hang, int cot) {
     cout << "Cac phan tu cuc tieu cua ma tran:\n";
     for (int i = 0; i < hang; ++i) {
@@ -203,7 +258,7 @@ void XuatCucTieu(int array[ROWS][COLS], int hang, int cot) {
     cout << endl;
 }
 
-// Hàm sắp xếp ma trận theo yêu cầu
+// 6. Hàm sắp xếp ma trận theo yêu cầu
 void SapXepMaTran(int array[ROWS][COLS], int hang, int cot, bool tangDdan) {
     for (int i = 0; i < hang; ++i)
         for (int j = 0; j < cot - 1; ++j)
@@ -217,7 +272,7 @@ void SapXepMaTran(int array[ROWS][COLS], int hang, int cot, bool tangDdan) {
                         swap(array[i][j], array[i][k]);
 }
 
-// Hàm kiểm tra giá trị có giảm dần theo cột và dòng (ziczac)
+// 7. Hàm kiểm tra giá trị có giảm dần theo cột và dòng (ziczac)
 bool KiemTraZicZac(int array[ROWS][COLS], int hang, int cot) {
     for (int i = 0; i < hang - 1; ++i) {
         for (int j = 0; j < cot - 1; ++j) {
@@ -235,7 +290,7 @@ bool KiemTraZicZac(int array[ROWS][COLS], int hang, int cot) {
     return true;
 }
 
-// Hàm liệt kê chỉ số các dòng chứa toàn giá trị chẵn
+// 8. Hàm liệt kê chỉ số các dòng chứa toàn giá trị chẵn
 void LietKeDongChan(int array[ROWS][COLS], int hang, int cot) {
     cout << "Cac dong chua toan gia tri chan:\n";
     for (int i = 0; i < hang; ++i) {
@@ -252,7 +307,7 @@ void LietKeDongChan(int array[ROWS][COLS], int hang, int cot) {
     }
 }
 
-// Hàm liệt kê các dòng chứa giá trị giảm dần
+// 9. Hàm liệt kê các dòng chứa giá trị giảm dần
 void LietKeDongGiamDan(int array[ROWS][COLS], int hang, int cot) {
     cout << "Cac dong chua gia tri giam dan:\n";
     for (int i = 0; i < hang; ++i) {
@@ -269,7 +324,7 @@ void LietKeDongGiamDan(int array[ROWS][COLS], int hang, int cot) {
     }
 }
 
-// Hàm tìm giá trị xuất hiện nhiều nhất trong ma trận
+// 10. Hàm tìm giá trị xuất hiện nhiều nhất trong ma trận
 int TimGiaTriXuatHienNhieuNhat(int array[ROWS][COLS], int hang, int cot) {
     int maxCount = 0;
     int maxValue = array[0][0];
@@ -296,7 +351,7 @@ int TimGiaTriXuatHienNhieuNhat(int array[ROWS][COLS], int hang, int cot) {
     return maxValue;
 }
 
-// Hàm tìm chữ số xuất hiện nhiều nhất trong ma trận
+// 11. Hàm tìm chữ số xuất hiện nhiều nhất trong ma trận
 int TimChuSoXuatHienNhieuNhat(int array[ROWS][COLS], int hang, int cot) {
     int chuSo[10] = {0};
 
@@ -370,7 +425,7 @@ int main() {
     }
     int array[ROWS][COLS];
     taoMaTran(array, hang, cot, a, b);
-    cout << "Tao ma tran ngau nhien: " << endl;
+    cout << "Tao va xuat ma tran Array chua cac phan tu ngau nhien: " << endl;
     inMaTran(array, hang, cot);
     cout << endl;
     cout << "Cac phan tu hoang hau: ";
@@ -385,7 +440,15 @@ int main() {
     sapxepMangTangTheoTungDong(array, hang, cot);
     cout << "Sap xep mang A tang theo tung dong: " << endl;
     inMaTran(array, hang, cot);
-    // Bài 3
+    cout << "Tinh va xuat tong gia tri tung dong" << endl;
+    tinhVaXuatTongDong(array, hang, cot);
+    cout << "Xuat phan tu lon nhat tren tung cot" << endl;
+    xuatPhanTuLonNhatTrenCot(array, hang, cot);
+    cout << "Xuat cac phan tu thuoc cac duong bien tren, duoi, trai va phai" << endl;
+    xuatPhanTuDuongBien(array, hang, cot);
+    cout << "Xuat cac phan tu cuc dai" << endl;
+    xuatPhanTuCucDai(array, hang, cot);
+    // Bài 3 (tiếp tục các hàm xử lý trên mảng 2 chiều A (bài 1))
     int maxBien = TimPhanTuLonNhatBien(array, hang, cot);
     cout << "Phan tu lon nhat tren bien cua ma tran: " << maxBien << endl;
 
