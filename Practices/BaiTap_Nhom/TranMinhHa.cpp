@@ -1,8 +1,8 @@
-//  Buổi 4. 
+//  Buổi 4
 //          Bài tập thực hành trên lớp -    Bài 2: Câu 4, 5, 6
 //          Bài tập thực hành về nhà -  Bài 3: Câu 12, 13, 14
 //                                      Bài 4: Câu 1, 2, 3
-//  Buổi 6.
+//  Buổi 6
 //          Bài thực hành trên lớp - Bài 3, bài 5
 //          Bài thực hành về nhà - Bài 9, bài 10
 #include <iostream>
