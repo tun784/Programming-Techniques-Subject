@@ -4,7 +4,7 @@
 int main ()
 {
     // Tìm vị trí đầu tiên của 1 ký tự trong 1 chuỗi và từ vị trí đó cắt ra tới cuối chuỗi.
-    const char str1[] = "https://vietjack.com/lap-trinh-c/index.jsp";
+    const char str1[] = "hello";
     const char ch = '.';
     char *ret;
     ret = strchr(str1, ch);
