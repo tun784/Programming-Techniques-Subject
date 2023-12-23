@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
+#include <time.h>
+#include <math.h>
 using namespace std;
 // Bài 1
 const int MAX_SIZE = 100;
