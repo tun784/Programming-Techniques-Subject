@@ -8,21 +8,18 @@ void inputArray(int arr[], int n) {
 }
 int findMinEven(int A[], int n) {
     int minEven = __INT_MAX__;  // Initialize minEven to a very large value
-    for (int i = 0; i < n; i++) {
-        if (A[i] % 2 == 0 && A[i] < minEven) {
+    for (int i = 0; i < n; i++)
+        if (A[i] % 2 == 0 && A[i] < minEven)
             minEven = A[i];
-        }
-    }
     return minEven;
 }
 void inputMatrix(int matrix[][100], int rows, int cols) {
     printf("Enter elements of the matrix:\n");
-    for (int i = 0; i < rows; i++) {
+    for (int i = 0; i < rows; i++)
         for (int j = 0; j < cols; j++) {
             printf("Enter element at position [%d][%d]: ", i, j);
             scanf("%d", &matrix[i][j]);
         }
-    }
 }
 void printDiagonals(int matrix[][100], int size) {
     printf("Elements on the diagonals parallel to the main diagonal:\n");
@@ -68,7 +65,6 @@ int findMaxSumColumn(int matrix[][100], int size) {
 
     return maxSumColumn;
 }
-
 int main(){
     int option;
     scanf("%d",&option);
