@@ -14,12 +14,16 @@ int fibonacci(int n){
 int nCk(int n, int k){
     return (n == k || k == 0) ? 1 : factorial(n) / (factorial(k) * factorial(n - k));
 }
+int nAk(int n, int k){
+    return (n == k || k == 0) ? 1 : factorial(n) / factorial(n - k);
+}
 int main(){
     int a, b;
     cout << "Nhap so a va so b bat ky: ";
     cin >> a >> b;
     cout << "Ket qua giai thua cua " << a << " la: " << factorial(a) << endl;
     cout << "So Fibonacci cua " << a << " la: " << fibonacci(a) << endl;
-    cout << "Ket qua cua " << a << " chap " << b << " la: " << nCk(a, b);
+    cout << "Ket qua cua to hop chap " << b << " cua " << a << " phan tu la: " << nCk(a, b) << endl;
+    cout << "Ket qua cua chinh hop chap " << b << " cua " << a << " phan tu la: " << nAk(a, b) << endl;
     return 0;
 }
