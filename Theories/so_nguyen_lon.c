@@ -1,8 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 
-int main()
-{
+int main() {
     long N, n, a, c;
     int tong = 0, max = 0;
 
