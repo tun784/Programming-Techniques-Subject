@@ -3,7 +3,7 @@
 #include <string.h>
 using namespace std;
 // Câu 2b
-void sapXep(int a[][], int n){
+void sapXep(int a[][10], int n){
     for (int j = 0; j < n; j++){
         for (int i = 1; i < n; i++)
             if (a[i][j] < a[i - 1][j])
