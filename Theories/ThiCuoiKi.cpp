@@ -2,6 +2,14 @@
 #include <math.h>
 #include <string.h>
 using namespace std;
+// Câu 2b
+void sapXep(int a[][], int n){
+    for (int j = 0; j < n; j++){
+        for (int i = 1; i < n; i++)
+            if (a[i][j] < a[i - 1][j])
+                swap(a[i][j], a[i - 1][j]);
+    }
+}
 // Câu 4a
 int U(int a, int r, int n){
     if (n == 1)
